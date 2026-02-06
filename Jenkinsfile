@@ -22,5 +22,13 @@ pipeline {
       }
     }
 
+    stage('deliver') {
+      steps {
+        sh './jenkins/scripts/deliver.sh'
+        input 'finished using the web site?(click "proceed" to continue)'
+        sh './jenkins/scripts/kill.sh'
+      }
+    }
+
   }
 }
